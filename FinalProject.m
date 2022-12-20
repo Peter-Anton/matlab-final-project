@@ -28,10 +28,11 @@ else
 end
 signal=[];
 j=1;
+fprintf("you have the following signals:\n1-siusoidal\n 2-dc \n 3-ramp \n 4-polynomial \n 5-expontiel\n")
 while(j<=breakPoint+1)
     time=linspace(times(j),times(j+1),(times(j+1)-times(j))*fs);
-    signal_name=input('enter name of the signal:','s');
-    des_signal=generate_signal(signal_name,time);
+    signal_num=input('enter number of the signal:');
+    des_signal=generate_signal(signal_num,time);
     signal=[signal,des_signal];
     j=j+1;
 end
@@ -48,7 +49,7 @@ while(op_num>0)
     switch op
         case 'a'
                     amp = input('Enter the valule of amplification:','s');
-                    signal_modified = amp*signal;
+                    signal_modified = amp.*signal;
                     figure(2)
                     plot(t,signal_modified)
                     title('Amplified Signal')

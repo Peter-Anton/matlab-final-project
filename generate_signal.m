@@ -1,20 +1,6 @@
-function des_signal = generate_signal(signal_name,time)
-switch signal_name
-    case 'dc'
-        
-        amp = input('please enter the Amplitude :');
-       
-        len = length(time);
-        
-        des_signal = amp*ones(1,len);
-    case 'ramp'
-        
-        amp = input('please enter the Amplitude :');
-       
-        intercept = input('please enter the intercept :');
-        
-        des_signal = amp*time+intercept;
-    case 'sinusoidal'
+function des_signal = generate_signal(signal_num,time)
+switch signal_num
+   case 1
         
         amp = input('please enter the Amplitude :');
         
@@ -24,16 +10,23 @@ switch signal_name
         
         des_signal = amp*sin(2*pi*time*freq + phase);
     
-   
-    case 'exponential'
+    case 2
         
         amp = input('please enter the Amplitude :');
+       
+        len = length(time);
         
-      
-        e = input('please enter the exponent :');
+        des_signal = amp*ones(1,len);
+    case 3
         
-        des_signal = amp*exp(e*time);
-    case  'polynomial'
+        amp = input('please enter the Amplitude :');
+       
+        intercept = input('please enter the intercept :');
+        
+        des_signal = amp*time+intercept;
+    
+   
+    case 4
         power = input('please provide the power');
         i=1;
         fprintf('');
@@ -44,6 +37,16 @@ switch signal_name
             des_signal=portion_signal+coeffenets(i)*time.^((power+1)-i);
             i=i+1;
         end
+        
+    
+    case 5
+        
+        amp = input('please enter the Amplitude :');
+        
+      
+        e = input('please enter the exponent :');
+        
+        des_signal = amp*exp(e*time);
         
 end
 end

@@ -19,40 +19,45 @@ plot(t1,y3);
 title("exp(-abs(4-2*t)./5)")
 %%Q2
 %%a
-fs=2;
-Ts=1/fs;
-t2=linspace(-100000,100000,200000*fs);
-z=(10^(-3)).*t2;
-m=(sin(z)./z).^2;
-M=Ts*fftshift(fft(m));
-n=length(m);
-f=(-n/2:n/2-1)*(fs/n);
+fs=1000;
+t2=linspace(-10000,10000,fs);
+m=sinc((10^-3)*t2).^2;
+M=(1/fs)*fftshift(fft(m));
+f=fs/2*t2;
 w=2*pi*f;
 figure(2)
 subplot(2,1,1)
 plot(w,abs(M));
 title("sinc fourier transform")
-xlim([-0.004,0.004]);
+xlim([-20000000 20000000])
 subplot(2,1,2);
 plot(t2,m);
 title("sinc only")
 %%b
-x=2*pi*100000*t2;
-r=m.*cos(x);
+fs=10000;
+t5=linspace(-10000,10000,fs);
+z=(10.^(-3)).*t5;
+Sinc=(sin(z)./z).^2;
+x=2*pi*100000*t5;
+r=Sinc.*cos(x);
+n=length(r);
+f=(-n/2:n/2-1)*(fs/n);
+w=2*pi*f;
 figure(3);
 subplot(1,2,1);
-plot(t2,r);
+plot(t5,r);
 title("r(t)")
 subplot(1,2,2);
-R=Ts*fftshift(fft(r));
+R=(1/fs)*fftshift(fft(r));
 plot(w,abs(R));
+xlim([-200 200])
 title("R(jw)")
 %%Q3
+syms t
 T0=pi;
 w0=(2*pi)/T0;
-e=exp(-t);
 n=-20:20;
-Dn=1/T0*int(e*exp(-(j*n*w0*t)),t,0,pi);
+Dn=1/T0*int(exp(-t)*exp(-(j*n*w0*t)),t,0,pi);
 figure(6)
 subplot(1,2,1)
 stem(n,abs(Dn));
