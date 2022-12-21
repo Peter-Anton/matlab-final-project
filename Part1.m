@@ -17,6 +17,8 @@ subplot(2,2,4);
 y3=exp(-abs(4-2*t1)./5);
 plot(t1,y3);
 title("exp(-abs(4-2*t)./5)")
+
+
 %%Q2
 %%a
 fs=1000;
@@ -33,6 +35,7 @@ xlim([-20000000 20000000])
 subplot(2,1,2);
 plot(t2,m);
 title("sinc only")
+
 %%b
 fs=10000;
 t5=linspace(-10000,10000,fs);
@@ -52,12 +55,13 @@ R=(1/fs)*fftshift(fft(r));
 plot(w,abs(R));
 xlim([-200 200])
 title("R(jw)")
+
+
 %%Q3
 syms t
-T0=pi;
-w0=(2*pi)/T0;
+w0=(2*pi)/pi;
 n=-20:20;
-Dn=1/T0*int(exp(-t)*exp(-(j*n*w0*t)),t,0,pi);
+Dn=1/pi*int(exp(-t)*exp(-(j*n*w0*t)),t,0,pi);
 figure(6)
 subplot(1,2,1)
 stem(n,abs(Dn));
