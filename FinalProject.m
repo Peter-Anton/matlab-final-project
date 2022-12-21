@@ -1,21 +1,21 @@
-fs=input("please enter sampling frequancy:");
-tstart=input("please enter starting time scaling:");
-tend=input("please enter end time scaling:");
+fs = input("Sampling frequency: ");
+
+tstart=input("Start time scale: ");
+tend=input("End time scale: ");
 t=linspace(tstart,tend,(tend-tstart)*fs);
-breakPoint=input("please enter number of break point:");
+breakPoint=input("Number of break points: ");
 if(breakPoint>0)
-    pos=zeros(1,breakPoint);
-    fprintf('enter the positions:\n');
+    pos = zeros(1, breakPoint);
 else
-    pos=[0];
+    pos = [0];
 end
 i=1;
 while(i<=breakPoint)
-    pos1=input('');
+    pos1=input("Enter position " + i + ": ");
     if(pos1<tend&&pos1>tstart)
         pos(i)=pos1;
     else
-        fprintf('enter a valid position');
+        fprintf('Enter a valid position!\n');
         i=i-1;
     end
     i=i+1;
@@ -28,11 +28,11 @@ else
 end
 signal=[];
 j=1;
-fprintf("you have the following signals:\n1-siusoidal\n 2-dc \n 3-ramp \n 4-polynomial \n 5-expontiel\n")
+fprintf("Choose your desired signal:\n1-siusoidal\n2-dc \n3-ramp \n4-polynomial \n5-expontiel\n")
 while(j<=breakPoint+1)
     time=linspace(times(j),times(j+1),(times(j+1)-times(j))*fs);
     signal_num=input('enter number of the signal:');
-    des_signal=generate_signal(signal_num,time);
+    des_signal = generate_signal(signal_num,time);
     signal=[signal,des_signal];
     j=j+1;
 end
