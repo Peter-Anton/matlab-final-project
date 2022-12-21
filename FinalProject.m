@@ -91,7 +91,4 @@ while(op_num>0)
     end
 op_num=op_num-1;
 end
-elseif strcmp(ans1,'n')
-    signal=signal;
-    fprintf('thank you')
 end
