@@ -81,7 +81,7 @@ while(op_num>0)
                     time = t./comp;
                     figure(6)
                     plot(time,signal)
-                    title('Comoresed Signal')
+                    title('Compresed Signal')
                     op_num=op_num-1;
            case 'f'
                op_num=op_num-1;
